@@ -1,18 +1,17 @@
 import React, {Component} from 'react';
+import Lemma from "./Lemma";
 
 class LemmaList extends Component {
     render() {
-        let lemmaNodes = this.props.data.map(function(lemma, index) {
+        let lemmaNodes = this.props.data.map(function (lemma) {
             return (
-                <div key={index}>{lemma.l.t}</div>
+                <Lemma data={lemma}/>
             );
         });
 
         return (
-            <div id="project-lemmata" className="lemmaList">
-                <ul>
-                    {lemmaNodes}
-                </ul>
+            <div>
+                {lemmaNodes}
             </div>
         );
     }
