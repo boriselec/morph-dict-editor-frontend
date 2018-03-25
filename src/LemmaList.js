@@ -3,9 +3,10 @@ import Lemma from "./Lemma";
 
 class LemmaList extends Component {
     render() {
+        let url = this.props.url;
         let lemmaNodes = this.props.data.map(function (lemma) {
             return (
-                <Lemma data={lemma}/>
+                <Lemma data={lemma} url={url}/>
             );
         });
 
