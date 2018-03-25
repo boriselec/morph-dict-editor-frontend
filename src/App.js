@@ -48,7 +48,7 @@ class App extends Component {
     render() {
         return (
             <div className="lemmaBox">
-                <LemmaList data={this.state.data}/>
+                <LemmaList data={this.state.data} url={this.props.url}/>
                 <ReactPaginate previousLabel={"previous"}
                                nextLabel={"next"}
                                breakLabel={<a href="">...</a>}

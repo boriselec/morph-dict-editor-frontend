@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import WordForm from "./WordForm";
+import $ from 'jquery';
 
 class Lemma extends Component {
     constructor(props) {
@@ -7,12 +8,36 @@ class Lemma extends Component {
 
         this.state = {
             showOtherForms: false,
-            lemmaStateCode: props.data.state
+            lemmaState: Lemma.decodeLemmaState(props.data.state)
+        }
+    }
+
+    static decodeLemmaState(stateCode) {
+        switch (stateCode) {
+            case '1': return 'entered';
+            case '2': return 'deleted';
+            default: return '';
         }
     }
 
     handleClick() {
         this.setState({showOtherForms: !this.state.showOtherForms});
+    }
+
+    handleDelete() {
+        $.ajax({
+            url      : this.props.url + '?' + $.param({'id': this.props.data.id}),
+            type     : 'DELETE',
+            crossDomain: true,
+
+            success: data => {
+                this.setState({lemmaState: 'deleted'});
+            },
+
+            error: (xhr, status, err) => {
+                console.error(this.props.url, status, err.toString());
+            }
+        });
     }
 
     render() {
@@ -30,17 +55,9 @@ class Lemma extends Component {
             return <WordForm data={props}/>
         });
 
-        function lemmaClass(state) {
-            switch (state.lemmaStateCode) {
-                case '1': return 'entered';
-                case '2': return 'deleted';
-                default: return '';
-            }
-        }
-
         return (
-            <div className={lemmaClass(this.state)}>
-                <WordForm data={mainForm} onClick={this.handleClick.bind(this)}/>
+            <div className={this.state.lemmaState}>
+                <WordForm data={mainForm} onClick={this.handleClick.bind(this)} onDelete={this.handleDelete.bind(this)}/>
                 <div className='formContainer'>
                     {this.state.showOtherForms ? otherForms : null}
                 </div>
