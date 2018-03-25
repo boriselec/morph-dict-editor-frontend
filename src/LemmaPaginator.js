@@ -4,7 +4,7 @@ import './App.css';
 import LemmaList from "./LemmaList";
 import $ from 'jquery';
 
-class App extends Component {
+class LemmaPaginator extends Component {
     constructor(props) {
         super(props);
 
@@ -17,7 +17,10 @@ class App extends Component {
     load() {
         $.ajax({
             url      : this.props.url,
-            data     : {limit: this.props.perPage, offset: this.state.offset},
+            data     : {
+                limit: this.props.perPage,
+                offset: this.state.offset,
+                text: this.props.searchText},
             dataType : 'json',
             type     : 'GET',
             crossDomain: true,
@@ -65,4 +68,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default LemmaPaginator;
