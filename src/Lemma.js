@@ -6,7 +6,8 @@ class Lemma extends Component {
         super(props);
 
         this.state = {
-            showOtherForms: false
+            showOtherForms: false,
+            lemmaStateCode: props.data.state
         }
     }
 
@@ -29,8 +30,16 @@ class Lemma extends Component {
             return <WordForm data={props}/>
         });
 
+        function lemmaClass(state) {
+            switch (state.lemmaStateCode) {
+                case '1': return 'entered';
+                case '2': return 'deleted';
+                default: return '';
+            }
+        }
+
         return (
-            <div>
+            <div className={lemmaClass(this.state)}>
                 <WordForm data={mainForm} onClick={this.handleClick.bind(this)}/>
                 <div className='formContainer'>
                     {this.state.showOtherForms ? otherForms : null}

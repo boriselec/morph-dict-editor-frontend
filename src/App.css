@@ -106,3 +106,11 @@
 .formContainer {
     margin-left: 100px;
 }
+
+.deleted {
+    background-color: lightpink;
+}
+
+.entered {
+    background-color: lightgreen;
+}
