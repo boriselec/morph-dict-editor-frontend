@@ -5,10 +5,19 @@ import $ from 'jquery';
 class Lemma extends Component {
     constructor(props) {
         super(props);
+        this.state = Lemma.initState(props.data.state);
+    }
 
-        this.state = {
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.data !== this.props.data) {
+            this.setState(Lemma.initState(nextProps.data.state))
+        }
+    }
+
+    static initState(state) {
+        return {
             showOtherForms: false,
-            lemmaState: Lemma.decodeLemmaState(props.data.state)
+            lemmaState: Lemma.decodeLemmaState(state)
         }
     }
 
