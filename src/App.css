@@ -114,3 +114,7 @@
 .entered {
     background-color: lightgreen;
 }
+
+.paginationContainer {
+    margin-top: 80px;
+}
