@@ -11,17 +11,25 @@ class LemmaPaginator extends Component {
 
         this.state = {
             data: [],
-            offset: 0
+            offset: 0,
+            currentPage: 0
         }
     }
 
-    load() {
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.searchText !== this.props.searchText) {
+            this.setState({currentPage: 0});
+            this.load(nextProps.searchText, 0);
+        }
+    }
+
+    load(searchText, offset) {
         $.ajax({
             url      : this.props.url,
             data     : {
                 limit: this.props.perPage,
-                offset: this.state.offset,
-                text: this.props.searchText},
+                offset: offset,
+                text: searchText},
             dataType : 'json',
             type     : 'GET',
             crossDomain: true,
@@ -37,15 +45,15 @@ class LemmaPaginator extends Component {
     }
 
     componentDidMount() {
-        this.load();
+        this.load(this.props.searchText, this.state.offset);
     }
 
     handlePageClick = (data) => {
         let selected = data.selected;
         let offset = Math.ceil(selected * this.props.perPage);
 
-        this.setState({offset: offset}, () => {
-            this.load();
+        this.setState({offset: offset, currentPage: selected}, () => {
+            this.load(this.props.searchText, this.state.offset);
         });
     };
 
@@ -64,6 +72,7 @@ class LemmaPaginator extends Component {
                                        marginPagesDisplayed={2}
                                        pageRangeDisplayed={5}
                                        onPageChange={this.handlePageClick}
+                                       forcePage={this.state.currentPage}
                                        containerClassName={"pagination"}
                                        subContainerClassName={"pages pagination"}
                                        activeClassName={"active"}/>
