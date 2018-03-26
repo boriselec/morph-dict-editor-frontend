@@ -3,6 +3,7 @@ import ReactPaginate from 'react-paginate';
 import './App.css';
 import LemmaList from "./LemmaList";
 import $ from 'jquery';
+import Search from "./Search";
 
 class LemmaPaginator extends Component {
     constructor(props) {
@@ -50,19 +51,24 @@ class LemmaPaginator extends Component {
 
     render() {
         return (
-            <div className="lemmaBox">
-                <LemmaList data={this.state.data} url={this.props.url}/>
-                <ReactPaginate previousLabel={"previous"}
-                               nextLabel={"next"}
-                               breakLabel={<a href="">...</a>}
-                               breakClassName={"break-me"}
-                               pageCount={this.state.pageCount}
-                               marginPagesDisplayed={2}
-                               pageRangeDisplayed={5}
-                               onPageChange={this.handlePageClick}
-                               containerClassName={"pagination"}
-                               subContainerClassName={"pages pagination"}
-                               activeClassName={"active"}/>
+            <div className={"container"}>
+                <div className={"paginationContainer"}>
+                    <div className="my-3 p-3 bg-white rounded box-shadow">
+                        <Search searchText={this.props.searchText}/>
+                        <LemmaList data={this.state.data} url={this.props.url}/>
+                        <ReactPaginate previousLabel={"previous"}
+                                       nextLabel={"next"}
+                                       breakLabel={<a href="">...</a>}
+                                       breakClassName={"break-me"}
+                                       pageCount={this.state.pageCount}
+                                       marginPagesDisplayed={2}
+                                       pageRangeDisplayed={5}
+                                       onPageChange={this.handlePageClick}
+                                       containerClassName={"pagination"}
+                                       subContainerClassName={"pages pagination"}
+                                       activeClassName={"active"}/>
+                    </div>
+                </div>
             </div>
         );
     }
