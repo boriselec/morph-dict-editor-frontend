@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Navigation = () => (
+const Navigation = ({onSearch}) => (
     <nav className="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
         <a className="navbar-brand" href="#">Morphological Dictionary</a>
         <button className="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
@@ -16,7 +16,7 @@ const Navigation = () => (
                     <a className="nav-link" href="#">Download</a>
                 </li>
             </ul>
-            <form className="form-inline my-2 my-lg-0">
+            <form className="form-inline my-2 my-lg-0" onSubmit={function(e) {e.preventDefault(); onSearch(e.target[0].value)}}>
                 <input className="form-control mr-sm-2" placeholder="Search" aria-label="Search" type="text"/>
                 <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
