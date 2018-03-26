@@ -1,4 +1,6 @@
 import React from 'react';
+import NavigationTab from "./NavigationTab";
+import SearchForm from "./SearchForm";
 
 const Navigation = ({onSearch}) => (
     <nav className="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
@@ -9,17 +11,10 @@ const Navigation = ({onSearch}) => (
 
         <div className="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
             <ul className="navbar-nav mr-auto">
-                <li className="nav-item">
-                    <a className="nav-link" href="#">Index</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="#">Download</a>
-                </li>
+                <NavigationTab title='Index'/>
+                <NavigationTab title='Download'/>
             </ul>
-            <form className="form-inline my-2 my-lg-0" onSubmit={function(e) {e.preventDefault(); onSearch(e.target[0].value)}}>
-                <input className="form-control mr-sm-2" placeholder="Search" aria-label="Search" type="text"/>
-                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <SearchForm onSearch={onSearch}/>
         </div>
     </nav>
 );
