@@ -66,7 +66,9 @@ class Lemma extends Component {
 
         return (
             <div className={this.state.lemmaState}>
-                <WordForm data={mainForm} onClick={this.handleClick.bind(this)} onDelete={this.handleDelete.bind(this)}/>
+                <WordForm data={mainForm}
+                          onClick={this.handleClick.bind(this)}
+                          onDelete={this.state.lemmaState !== 'deleted' ? this.handleDelete.bind(this) : undefined}/>
                 <div className='formContainer'>
                     {this.state.showOtherForms ? otherForms : null}
                 </div>
