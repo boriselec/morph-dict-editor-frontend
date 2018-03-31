@@ -12,7 +12,7 @@ class App extends Component {
     }
 
     handleSearch(text) {
-        this.setState({searchText: text ? text : undefined})
+        this.setState({searchText: text ? text : undefined, tabIndex: 0})
     }
 
     handleTab(index) {
