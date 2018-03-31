@@ -109,10 +109,27 @@
 
 .deleted {
     background-color: lightpink;
+    border-left-style: solid;
+    border-color: red;
 }
 
 .entered {
     background-color: lightgreen;
+    border-left-style: solid;
+    border-color: green;
+}
+
+.original {
+    border-left-style: solid;
+    border-color: black;
+}
+
+.otherForm {
+    background-color: lightgray;
+}
+
+.mainForm {
+    cursor: pointer;
 }
 
 .paginationContainer {
