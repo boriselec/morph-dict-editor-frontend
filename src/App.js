@@ -19,11 +19,15 @@ class App extends Component {
         this.setState({tabIndex: index});
     }
 
+    handlePostLemma() {
+        this.setState({tabIndex: 0});
+    }
+
     page(tabIndex) {
         switch (tabIndex) {
-            case 0: return <LemmaPaginator perPage={10} url={'http://localhost:8080/api/lemma'} searchText={this.state.searchText}/>;
+            case 0: return <LemmaPaginator perPage={10} url={this.props.url} searchText={this.state.searchText}/>;
             case 1: return <Download/>;
-            case 2: return <Edit/>;
+            case 2: return <Edit url={this.props.url} onPost={this.handlePostLemma.bind(this)}/>;
             case 3: return <About/>;
             default:return 'Error';
         }
