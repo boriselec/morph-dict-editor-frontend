@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import WordForm from "./WordForm";
+import WordForm from './WordForm';
 import $ from 'jquery';
 
 class Lemma extends Component {
@@ -25,7 +25,7 @@ class Lemma extends Component {
         switch (stateCode) {
             case '1': return 'entered';
             case '2': return 'deleted';
-            default: return '';
+            default: return 'original';
         }
     }
 
@@ -61,14 +61,15 @@ class Lemma extends Component {
 
         let otherForms = this.props.data.f.map(function (formData) {
             let props = form(formData);
-            return <WordForm data={props}/>
+            return <WordForm data={props} isMain={false}/>
         });
 
         return (
             <div className={this.state.lemmaState}>
                 <WordForm data={mainForm}
                           onClick={this.handleClick.bind(this)}
-                          onDelete={this.state.lemmaState !== 'deleted' ? this.handleDelete.bind(this) : undefined}/>
+                          onDelete={this.state.lemmaState !== 'deleted' ? this.handleDelete.bind(this) : undefined}
+                          isMain={true}/>
                 <div className='formContainer'>
                     {this.state.showOtherForms ? otherForms : null}
                 </div>
