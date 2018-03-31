@@ -145,3 +145,7 @@
     border-color: transparent;
     margin-right: 10px;
 }
+
+.nav-item a:hover {
+    cursor: pointer
+}
