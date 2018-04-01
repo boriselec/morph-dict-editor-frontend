@@ -26,7 +26,7 @@ class App extends Component {
     page(tabIndex) {
         switch (tabIndex) {
             case 0: return <LemmaPaginator perPage={10} url={this.props.url} searchText={this.state.searchText}/>;
-            case 1: return <Download/>;
+            case 1: return <Download url={this.props.url}/>;
             case 2: return <Edit url={this.props.url} onPost={this.handlePostLemma.bind(this)}/>;
             case 3: return <About/>;
             default:return 'Error';
