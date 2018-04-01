@@ -5,7 +5,8 @@ class Download extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            meta: {revision: 0},
+            link: []
         }
     }
 
@@ -16,7 +17,7 @@ class Download extends Component {
             crossDomain: true,
 
             success: data => {
-                this.setState({data: data})
+                this.setState(data)
             },
 
             error: (xhr, status, err) => {
@@ -26,6 +27,16 @@ class Download extends Component {
     }
 
     render() {
+        function statusBadge(revision, link) {
+            if (link.revision === revision) {
+                return <span className="badge badge-success">UP TO DATE</span>
+            } else if (link.revision < revision) {
+                return <span className="badge badge-warning">OUTDATED</span>
+            } else {
+                return <span className="badge badge-danger">NO DATA</span>
+            }
+        }
+
         return (
             <div className={'container'}>
                 <div className={'paginationContainer'}>
@@ -35,10 +46,11 @@ class Download extends Component {
                             <tr>
                                 <th scope='col'>#</th>
                                 <th scope='col'>Dictionary</th>
+                                <th scope='col'>Status</th>
                             </tr>
                             </thead>
                             <tbody>
-                            {this.state.data.map(function (link, i) {
+                            {this.state.link.map(function (link, i) {
                                 return <tr>
                                     <th scope='row'>{i + 1}</th>
                                     <td>
@@ -46,8 +58,11 @@ class Download extends Component {
                                         ? <a href={link.url} target='_blank'>{link.name}</a>
                                         : link.name + ': NO DATA'}
                                     </td>
+                                    <td>
+                                        {statusBadge(this.state.meta.revision, link)}
+                                    </td>
                                 </tr>
-                            })}
+                            }, this)}
                             </tbody>
                         </table>
                     </div>
