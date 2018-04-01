@@ -35,7 +35,7 @@ class Lemma extends Component {
 
     handleDelete() {
         $.ajax({
-            url      : this.props.url + '?' + $.param({'id': this.props.data.id}),
+            url      : this.props.url + '/api/lemma?' + $.param({'id': this.props.data.id}),
             type     : 'DELETE',
             crossDomain: true,
 
