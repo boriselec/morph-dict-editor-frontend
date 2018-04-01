@@ -149,3 +149,7 @@
 .nav-item a:hover {
     cursor: pointer
 }
+
+.badge-width {
+    width: 100px;
+}

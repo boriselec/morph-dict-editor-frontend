@@ -29,12 +29,16 @@ class Download extends Component {
     render() {
         function statusBadge(revision, link) {
             if (link.revision === revision) {
-                return <span className="badge badge-success">UP TO DATE</span>
+                return badgeTemplate('success', 'UP TO DATE')
             } else if (link.revision < revision) {
-                return <span className="badge badge-warning">OUTDATED</span>
+                return badgeTemplate('warning', 'OUTDATED')
             } else {
-                return <span className="badge badge-danger">NO DATA</span>
+                return badgeTemplate('danger', 'NO DATA')
             }
+        }
+
+        function badgeTemplate(className, description) {
+            return <span className={'badge-width badge badge-' + className}>{description}</span>
         }
 
         return (
