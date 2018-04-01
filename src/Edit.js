@@ -3,7 +3,7 @@ import $ from 'jquery';
 
 function postLemma(url, json, onPost) {
     $.ajax({
-        url      : url,
+        url      : url + '/api/lemma',
         type     : 'POST',
         data     : json,
         contentType: 'text/plain',

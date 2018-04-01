@@ -25,7 +25,7 @@ class LemmaPaginator extends Component {
 
     load(searchText, offset) {
         $.ajax({
-            url      : this.props.url,
+            url      : this.props.url + '/api/lemma',
             data     : {
                 limit: this.props.perPage,
                 offset: offset,
