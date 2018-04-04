@@ -15,14 +15,8 @@ class Download extends Component {
             url      : this.props.url + '/api/link',
             type     : 'GET',
             crossDomain: true,
-
-            success: data => {
-                this.setState(data)
-            },
-
-            error: (xhr, status, err) => {
-                console.error(this.props.url, status, err.toString());
-            }
+            success: data => this.setState(data),
+            error: (xhr, status, err) => console.error(this.props.url, status, err.toString())
         });
     }
 

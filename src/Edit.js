@@ -8,14 +8,16 @@ function postLemma(url, json, onPost) {
         data     : json,
         contentType: 'text/plain',
         crossDomain: true,
-
         success: data => {
             onPost();
+            $.ajax({
+                url      : url + '/admin/sync/dict/out',
+                type     : 'POST',
+                crossDomain: true,
+                error: (xhr, status, err) => console.error(url, status, err.toString())
+            });
         },
-
-        error: (xhr, status, err) => {
-            console.error(url, status, err.toString());
-        }
+        error: (xhr, status, err) => console.error(url, status, err.toString())
     });
 }
 
