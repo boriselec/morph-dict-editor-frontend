@@ -33,14 +33,8 @@ class LemmaPaginator extends Component {
             dataType : 'json',
             type     : 'GET',
             crossDomain: true,
-
-            success: data => {
-                this.setState({data: data.lemmata, pageCount: Math.ceil(data.meta.total / this.props.perPage)});
-            },
-
-            error: (xhr, status, err) => {
-                console.error(this.props.url, status, err.toString());
-            }
+            success: data => this.setState({data: data.lemmata, pageCount: Math.ceil(data.meta.total / this.props.perPage)}),
+            error: (xhr, status, err) => console.error(this.props.url, status, err.toString())
         });
     }
 

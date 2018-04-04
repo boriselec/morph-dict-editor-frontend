@@ -38,14 +38,16 @@ class Lemma extends Component {
             url      : this.props.url + '/api/lemma?' + $.param({'id': this.props.data.id}),
             type     : 'DELETE',
             crossDomain: true,
-
             success: data => {
                 this.setState({lemmaState: 'deleted'});
+                $.ajax({
+                    url      : this.props.url + '/admin/sync/dict/out',
+                    type     : 'POST',
+                    crossDomain: true,
+                    error: (xhr, status, err) => console.error(this.props.url, status, err.toString())
+                });
             },
-
-            error: (xhr, status, err) => {
-                console.error(this.props.url, status, err.toString());
-            }
+            error: (xhr, status, err) => console.error(this.props.url, status, err.toString())
         });
     }
 
