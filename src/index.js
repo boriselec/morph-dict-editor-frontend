@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import App from "./App";
+import properties from './application-properties.json'
 
-ReactDOM.render(<App url={'http://localhost:8080'}/>, document.getElementById('root'));
+ReactDOM.render(<App url={properties.url}/>, document.getElementById('root'));
 registerServiceWorker();
