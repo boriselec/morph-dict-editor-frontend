@@ -14,6 +14,7 @@ function postLemma(url, json, onPost) {
                 url      : url + '/admin/sync/dict/out',
                 type     : 'POST',
                 crossDomain: true,
+                global: false,
                 error: (xhr, status, err) => console.error(url, status, err.toString())
             });
         },
