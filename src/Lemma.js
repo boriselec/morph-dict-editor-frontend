@@ -44,6 +44,7 @@ class Lemma extends Component {
                     url      : this.props.url + '/admin/sync/dict/out',
                     type     : 'POST',
                     crossDomain: true,
+                    global: false,
                     error: (xhr, status, err) => console.error(this.props.url, status, err.toString())
                 });
             },
