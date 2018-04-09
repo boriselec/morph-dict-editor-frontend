@@ -20,7 +20,7 @@ class App extends Component {
     }
 
     handlePostLemma() {
-        this.setState({tabIndex: 0});
+        this.setState({searchText: undefined, tabIndex: 0});
     }
 
     page(tabIndex) {
