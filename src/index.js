@@ -5,6 +5,9 @@ import registerServiceWorker from './registerServiceWorker';
 import App from './App';
 import properties from './application-properties.json'
 import $ from 'jquery';
+import 'popper.js'
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap';
 
 let $body = $('body');
 $(document).on({
