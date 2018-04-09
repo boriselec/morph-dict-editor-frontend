@@ -147,6 +147,10 @@
     margin-right: 10px;
 }
 
+.deleteButton:hover {
+    color: white !important;
+}
+
 .nav-item a:hover {
     cursor: pointer
 }
