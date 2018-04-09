@@ -141,8 +141,8 @@
 }
 
 .deleteButton {
-    color: gray;
-    border-color: transparent;
+    color: gray !important;
+    border-color: transparent !important;
     margin-right: 10px;
 }
 

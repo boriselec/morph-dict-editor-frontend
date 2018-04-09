@@ -5,11 +5,11 @@ import SearchForm from './SearchForm';
 const Navigation = ({onSearch, onTab, activeIndex}) => (
     <nav className='navbar navbar-expand-md fixed-top navbar-dark bg-dark'>
         <a className='navbar-brand' href='#'>Morphological Dictionary</a>
-        <button className='navbar-toggler p-0 border-0' type='button' data-toggle='offcanvas'>
+        <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navBar' aria-controls='navBar' aria-expanded='false' aria-label='Toggle navigation'>
             <span className='navbar-toggler-icon'/>
         </button>
 
-        <div className='navbar-collapse offcanvas-collapse' id='navbarsExampleDefault'>
+        <div className='collapse navbar-collapse' id='navBar'>
             <ul className='navbar-nav mr-auto'>
                 <NavigationTab title='Index' index={0} onClick={onTab} activeIndex={activeIndex}/>
                 <NavigationTab title='Download' index = {1} onClick={onTab} activeIndex={activeIndex}/>
