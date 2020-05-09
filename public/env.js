@@ -1,1 +1,1 @@
-var backendUrl = 'http://localhost:8080'
+var backendUrl = 'http://localhost:8080/morph'
