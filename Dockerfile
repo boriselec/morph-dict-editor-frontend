@@ -14,5 +14,6 @@ FROM nginx:stable-alpine
 COPY --from=build /app/build /usr/share/nginx/html
 ENV backend_url "undefined"
 EXPOSE 80
-CMD echo "var backendUrl = '$backend_url'" >> /usr/share/nginx/html/env.js && \
+CMD > /usr/share/nginx/html/env.js && \
+    echo "var backendUrl = '$backend_url'" >> /usr/share/nginx/html/env.js && \
     nginx -g "daemon off;";
