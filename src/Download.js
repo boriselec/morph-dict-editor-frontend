@@ -53,7 +53,7 @@ class Download extends Component {
                                     <th scope='row'>{i + 1}</th>
                                     <td>
                                         {link.url
-                                        ? <a href={this.props.url + link.url} target='_blank'>{link.name}</a>
+                                        ? <a href={this.props.url + link.url} target='_blank' download>{link.name}</a>
                                         : link.name + ': NO DATA'}
                                     </td>
                                     <td>
